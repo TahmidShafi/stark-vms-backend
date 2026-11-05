@@ -32,6 +32,10 @@ public class Vehicle {
     @Column(nullable = false)
     private String status = "ACTIVE";
 
+    @ManyToOne
+    @JoinColumn(name = "driver_id", nullable = true, foreignKey = @ForeignKey(name = "fk_vehicles_driver"))
+    private Driver driver;
+
     public Vehicle() {
     }
 
@@ -89,5 +93,13 @@ public class Vehicle {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 }
